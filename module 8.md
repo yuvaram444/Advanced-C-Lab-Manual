@@ -16,7 +16,34 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    if (n >= 71 && n <= 79) {
+        switch (n) {
+            case 71: printf("seventy one\n"); break;
+            case 72: printf("seventy two\n"); break;
+            case 73: printf("seventy three\n"); break;
+            case 74: printf("seventy four\n"); break;
+            case 75: printf("seventy five\n"); break;
+            case 76: printf("seventy six\n"); break;
+            case 77: printf("seventy seven\n"); break;
+            case 78: printf("seventy eight\n"); break;
+            case 79: printf("seventy nine\n"); break;
+        }
+    } 
+    else if (n > 79) {
+        printf("Greater than 79\n");
+    }
+
+    return 0;
+}
+
+```
 
 
 
@@ -24,7 +51,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="588" height="295" alt="image" src="https://github.com/user-attachments/assets/6678c4a6-3a49-4175-a2fe-5af1a760d579" />
+
 
 
 
@@ -47,7 +75,27 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    char str[1000];
+    int freq[10] = {0};
+
+    scanf("%s", str);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= '0' && str[i] <= '9')
+            freq[str[i] - '0']++;
+    }
+
+    for (int i = 0; i < 10; i++)
+        printf("%d ", freq[i]);
+
+    return 0;
+}
+
+```
 
 
 
@@ -55,7 +103,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="798" height="226" alt="image" src="https://github.com/user-attachments/assets/471bf3ce-d46d-41bc-b2da-157ba8eaa7b4" />
+
 
 
 
@@ -84,7 +133,58 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+```
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void swap(char **a, char **b) {
+    char *temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int next_permutation(char *arr[], int n) {
+    int i = n - 2;
+    while (i >= 0 && strcmp(arr[i], arr[i + 1]) >= 0)
+        i--;
+    if (i < 0)
+        return 0;
+    int j = n - 1;
+    while (strcmp(arr[i], arr[j]) >= 0)
+        j--;
+    swap(&arr[i], &arr[j]);
+    for (int l = i + 1, r = n - 1; l < r; l++, r--)
+        swap(&arr[l], &arr[r]);
+    return 1;
+}
+
+int compare(const void *a, const void *b) {
+    return strcmp(*(const char **)a, *(const char **)b);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    char **arr = (char **)malloc(n * sizeof(char *));
+    for (int i = 0; i < n; i++) {
+        arr[i] = (char *)malloc(101 * sizeof(char)); 
+        scanf("%s", arr[i]);
+    }
+        qsort(arr, n, sizeof(char *), compare);
+    
+    do {
+        for (int i = 0; i < n; i++)
+            printf("%s%c", arr[i], i == n - 1 ? '\n' : ' ');
+    } while (next_permutation(arr, n));
+    for (int i = 0; i < n; i++)
+        free(arr[i]);
+    free(arr);
+    
+    return 0;
+}
+
+```
 
 
 
@@ -92,7 +192,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="437" height="441" alt="image" src="https://github.com/user-attachments/assets/c7208ad9-e765-4a7e-9c8d-48ac86aa6fa5" />
+
 
 
 
@@ -117,15 +218,38 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+void printPattern(int n) {
+    int size = 2 * n - 1;
+    for (int i = 0; i < size; i++) 
+    {
+
+        for (int j = 0; j < size; j++) 
+        {
+            int value = n - (i < j ? (i < size - j - 1 ? i : size - j - 1) : (j < size - i - 1 ? j : size - i - 1));
+            printf("%d ", value);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    printPattern(n);
+    return 0;
+}
+```
 
 
 
 Output:
 
 
-//paste your output here
+<img width="540" height="785" alt="image" src="https://github.com/user-attachments/assets/f9dfda06-fb56-4196-93f1-d4ccc3c8f11c" />
+
 
 
 
@@ -156,7 +280,23 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    int d1, d2, d3, d4, d5, sum;
+    d1 = n / 10000;          
+    d2 = (n / 1000) % 10;   
+    d3 = (n / 100) % 10;   
+    d4 = (n / 10) % 10;    
+    d5 = n % 10;            
+    sum = d1 + d2 + d3 + d4 + d5;
+    printf("%d\n", sum);
+    return 0;
+}
+```
 
 
 
@@ -164,7 +304,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="387" height="235" alt="image" src="https://github.com/user-attachments/assets/d26a6ea7-1aae-40fe-9a85-27c799cc87ad" />
+
 
 
 
@@ -173,8 +314,6 @@ Output:
 
 Result:
 Thus, the program is verified successfully
-
-
 
 
 
