@@ -12,10 +12,37 @@ Algorithm:
 5.	Call the max_of_four function with the input integers and store the result in the greater variable
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+int max_of_four(int a, int b, int c, int d)
+{
+    int max=a;
+    if(b>max)
+    {
+        max=b;
+    }
+    else if(c>max)
+    {
+        max=c;
+    }
+    else if(d>max)
+    {
+        max=d;
+    }
+    return max;
+}
+int main()
+{
+    int a,b,c,d;
+    scanf("%d%d%d%d",&a,&b,&c,&d);
+    printf("%d",max_of_four(a,b,c,d));
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+<img width="330" height="330" alt="image" src="https://github.com/user-attachments/assets/bd70920f-db09-4810-b5b1-bca3f1f2f0eb" />
+
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -36,10 +63,48 @@ Algorithm:
 7.	Call the calculate_the_max function with input values.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+void calculate_the_maximum(int n,int k)
+{
+    int max_and=0,max_or=0,max_xor=0;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=i+1;j<=n;j++)
+        {
+            int and_res=i&j;
+            int or_res=i|j;
+            int xor_res=i^j;
+            
+            if(and_res<k && and_res>max_and)
+            {
+                max_and=and_res;
+            }
+            if(or_res<k && or_res>max_or)
+            {
+                max_or=or_res;
+            }
+            if(xor_res<k && xor_res>max_xor)
+            {
+                max_xor=xor_res;
+            }
+        }
+        
+    }
+    printf("%d\n%d\n%d",max_and,max_or,max_xor);
+}
+int main()
+{
+    int n,k;
+    scanf("%d%d",&n,&k);
+    calculate_the_maximum(n,k);
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+<img width="330" height="376" alt="image" src="https://github.com/user-attachments/assets/6ac22661-73fb-4cb1-b7c8-8f637892511d" />
+
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -59,10 +124,50 @@ Algorithm:
 5.	Use a for loop to iterate over the queries.
  
 Program:
-//type your code here
+```
+#include<stdio.h>
+#define MAX_BOOKS_PER_SHELF 100
+int main()
+{
+    int n,m;
+    scanf("%d%d",&n,&m);
+    int shelfs[n][100];
+    int shelf_size[n];
+    for(int i=0;i<n;i++)
+    {
+        shelf_size[i]=0;
+    }
+    for(int i=0;i<m;i++)
+    {
+        int query;
+        scanf("%d",&query);
+        if(query==1)
+        {
+            int x,y;
+            scanf("%d%d",&x,&y);
+            shelfs[x][shelf_size[x]]=y;
+            shelf_size[x]++;
+        }
+        else if(query==2)
+        {
+            int x,y;
+            scanf("%d%d",&x,&y);
+            printf("%d\n",shelfs[x][y]);
+        }
+        else if (query==3)
+        {
+            int x;
+            scanf("%d",&x);
+            printf("%d\n",shelf_size[x]);
+        }
+    }
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+<img width="335" height="267" alt="image" src="https://github.com/user-attachments/assets/3043246d-a622-4e33-bde4-edb44973e034" />
+
 
 
 Result:
@@ -86,10 +191,28 @@ Algorithm:
 
 
 Program:
-//type your code here
+```
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int arr[n];
+    int sum=0;
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+        sum+=arr[i];
+    }
+    printf("%d",sum);
+    
+    
+}
+```
 
 Output:
-//paste your output here
+<img width="832" height="208" alt="image" src="https://github.com/user-attachments/assets/6f97ad21-b326-453d-b167-91a2f1950245" />
+
 
  
 
@@ -120,10 +243,28 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 
 Program:
-//type your code here
+```
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,sizeof(str),stdin);
+    int len=sizeof(str);
+    int count=1;
+     for(int i=0;i<len-1;i++){
+         if(str[i]==' ')
+         count++;
+         
+     }
+     printf("Total number of words in the string is :%d",count);
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+<img width="827" height="116" alt="image" src="https://github.com/user-attachments/assets/6aa8e6fe-d3a5-47e8-888f-0a2efe62af67" />
+
 
 
 
