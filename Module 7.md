@@ -16,12 +16,37 @@ Else
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+struct person {
+    int age;
+    char name[10];
+};
+
+int main() {
+    struct person p;
+    scanf("%d %s", &p.age, p.name);
+    printf("Age:%d\n", p.age);
+    printf("Name:%s", p.name);
+    printf("vaccine:%d\n", p.age); 
+    printf("eligibility:");
+
+    if (p.age > 18) {
+        printf("yes");
+    } else {
+        printf("no");
+    }
+
+    return 0;
+}
+```
 
 
 Output:
 
-//paste your output here
+<img width="646" height="311" alt="image" src="https://github.com/user-attachments/assets/8cc61a7a-d394-427a-8706-4daa1ed43a65" />
+
 
 
 Result:
@@ -44,7 +69,37 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+struct Input
+{
+    int x;
+    int y;
+};
+
+struct Output
+{
+    int sum;
+};
+
+struct Output add(struct Input in) 
+{
+    struct Output out;
+    out.sum = in.x + in.y;
+    return out;
+}
+
+int main() {
+    struct Input values;
+    struct Output result;
+    scanf("%d", &values.x);
+    scanf("%d", &values.y);
+    result = add(values);
+    printf("%d\n", result.sum);
+
+    return 0;
+}
+```
 
 
 
@@ -52,7 +107,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="393" height="367" alt="image" src="https://github.com/user-attachments/assets/ef6f7dd1-b656-4293-aa27-251c6b60df47" />
+
 
 
 
@@ -85,8 +141,27 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```
 
-//type your code here
+#include <stdio.h>
+int main()
+{
+    FILE *fp;
+    char name[20];
+    scanf("%s",name);
+    fp=fopen(name,"w");
+    if(fp==NULL)
+    {
+        printf("error checking");
+    }
+    else
+    {
+        printf("%s File Created Successfully\n%s File Opened\n",name,name);
+    }
+    fclose(fp);
+    printf("%s File Closed\n",name);
+}
+```
 
 
 
@@ -94,7 +169,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="1142" height="441" alt="image" src="https://github.com/user-attachments/assets/c350e31e-9181-40ed-bca1-b2e2901c8b8c" />
+
 
 
 
@@ -133,7 +209,37 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    char filename[100];
+    char line[100];
+    int n, i;
+    FILE *file;
+    scanf("%s", filename);
+    file = fopen(filename, "w");
+
+    if (file == NULL) 
+    {
+        printf("Error: Could not create %s\n", filename);
+        return 1;
+    }
+    scanf("%d", &n);
+    getchar();
+    for (i = 0; i < n; i++) {
+        fgets(line, sizeof(line), stdin); 
+        fputs(line, file);                
+    }
+
+  
+    fclose(file);
+    printf("%s Opened\n", filename);
+    printf("Data added Successfully\n");
+
+    return 0;
+}
+```
 
 
 
@@ -141,7 +247,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="827" height="440" alt="image" src="https://github.com/user-attachments/assets/b39be2c8-664c-45ee-a850-927df8279282" />
+
 
 
 
@@ -187,7 +294,59 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+#define TOTAL_WORKING_DAYS 84
+#define MAX_DAYS_PER_MONTH 21
+
+struct Student {
+    int regNo;
+    char name[50];
+    int june;
+    int july;
+    int august;
+    int september;
+    int totalPresent;
+    float attendancePercentage;
+    char eligibility[4]; 
+};
+
+int main() {
+    struct Student s;
+    scanf("%d", &s.regNo);
+    scanf("%s", s.name);
+    scanf("%d", &s.june);
+    scanf("%d", &s.july);
+    scanf("%d", &s.august);
+    scanf("%d", &s.september);
+    
+    if (s.june > MAX_DAYS_PER_MONTH || s.july > MAX_DAYS_PER_MONTH ||
+        s.august > MAX_DAYS_PER_MONTH || s.september > MAX_DAYS_PER_MONTH) 
+        {
+        printf("Error: Days present in any month should not exceed 21.\n");
+        return 1;
+    }
+
+    s.totalPresent = s.june + s.july + s.august + s.september;
+    
+    s.attendancePercentage = (s.totalPresent / (float)TOTAL_WORKING_DAYS) * 100;
+    
+    if (s.attendancePercentage > 75.0)
+        sprintf(s.eligibility, "yes");
+    else
+        sprintf(s.eligibility, "no");
+        
+    printf("Reg.no:%d\n", s.regNo);
+    printf("Name:%s\n", s.name);
+    printf("Total.No.of.present days:%d\n", s.totalPresent);
+    printf("Attendence:%.2f\n", s.attendancePercentage);
+    printf("eligibility:%s\n", s.eligibility);
+
+    return 0;
+}
+
+```
 
 
 
@@ -195,7 +354,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="866" height="527" alt="image" src="https://github.com/user-attachments/assets/3416ec70-24fe-4eed-96ef-c18e5f7e61fe" />
+
 
 
 
